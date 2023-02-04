@@ -10,19 +10,13 @@
 
 	}
 	.innerBox{
-		width:100px;
-		height:100px;
+		width:50px;
+		height:50px;
 		background-color: aquamarine;
-		margin:2px
+
 	}
-.displayBlock{
-	display: inline-block;
-}
+
 	.outerBox {
-		// display: grid;
-		// width:400px;
-		// grid-template-columns: repeat(3, 1fr);
-		// gap: 10px;
 		background-color: rgb(79, 80, 80);
 	}
 	.container{
