@@ -1,26 +1,20 @@
 import React from 'react';
+import ShapeManager from '../services/ShapeManager';
 
-const radius = 100;
-const two = 2;
-const offSetX = 500;
-const offSetY = 500;
-const width = 50;
+const Circle = ({ shapeCount, index }) =>
+	<div
+		style={ {
+			position: 'absolute',
+			left: `${ ShapeManager.circlePosition(shapeCount, index).movePosX }px`,
+			top: `${ ShapeManager.circlePosition(shapeCount, index).movePosY }px`,
+			border: '1px solid red',
+			height: '50px',
+			width: '50px',
+			borderRadius: '50%',
+			backgroundColor: 'aquamarine',
 
-const Circle = ({ index, number }) => {
-	const theta = two * Math.PI / number;
-	const movePosY = radius * Math.sin(theta * index) + offSetY;
-	const movePosX = radius * Math.cos(theta * index) + +offSetX;
+		} }
 
-	return (
-		<div
-			key={ index }
-			style={ {
-				position: 'absolute',
-				left: `${ movePosX }px`,
-				top: `${ movePosY }px`,
-			} }
-			className="innerBox "
-		/>);
-};
+	/>;
 
 export default Circle;
