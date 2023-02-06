@@ -1,17 +1,24 @@
-import { range } from '@laufire/utils/collection';
 import React from 'react';
-import Square from './Square';
+import InputBox from './InputBox';
+import InputSpace from './InputSpace';
+import ShapeManager from '../services/ShapeManager';
 
-const Squares = ({ state: { shapeCount, margin }}) =>
-	<div>
-		{range(0, shapeCount).map((dummy, index) =>
-			<Square
-				key={ index }
-				index={ index }
-				shapeCount={ shapeCount }
-				margin={ margin }
+const Squares = (context) => {
+	const { state: { shapeCount, margin }} = context;
+	const shapes = ShapeManager.createShapes(context);
 
-			/>)}
-	</div>;
+	return (
+		<div>
+			<p>Select the shape, number of shapes and the spacing </p>
+			<InputBox { ...context }/>
+			<InputSpace { ...context }/>
+			{shapes.map((shape, index) =>
+				<div
+					key={ index }
+					className={ `${ shape.class }` }
+				/>)}
+
+		</div>);
+};
 
 export default Squares;

@@ -4,12 +4,26 @@
 	button {
 		font-weight: bold;
 	}
-	.input{
+	.dropDown{
 		font-size: 2em;
 		width:5em
 
 	}
-
+.square{
+	position: 'absolute';
+	height: '50px';
+	width: '50px';
+	background-color: '#ecc';
+	border: '1px solid red',
+}
+.circle{
+	position: 'absolute';
+	height: '50px';
+	width: '50px';
+	border: '1px solid red';
+	border-radius: '50%';
+	background-color: 'aquamarine';
+}
 	.container{
 		width:80%;
 		margin:20px 100px

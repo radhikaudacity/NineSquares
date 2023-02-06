@@ -4,14 +4,10 @@ import ShapeManager from '../services/ShapeManager';
 const Square = ({ shapeCount, index, margin }) =>
 	<div
 		style={ {
-			position: 'absolute',
-			height: '50px',
-			width: '50px',
-			backgroundColor: '#ecC',
-			left: `${ ShapeManager.squarePosition(
+			left: `${ ShapeManager.getSquarePosition(
 				shapeCount, index, margin
 			).movePosX }px`,
-			top: `${ ShapeManager.squarePosition(
+			top: `${ ShapeManager.getSquarePosition(
 				shapeCount, index, margin
 			).movePosY }px`,
 		} }

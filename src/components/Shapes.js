@@ -1,15 +1,28 @@
 import React from 'react';
+import DropDown from './DropDown';
 import InputBox from './InputBox';
-import InputMargin from './InputMargin';
-import Circles from './Circles';
-import Squares from './Squares';
+import InputSpace from './InputSpace';
+import ShapeManager from '../services/ShapeManager';
 
-const Shapes = (context) =>
-	<div className="container">
+const Shapes = (context) => {
+	const shapes = ShapeManager.createShapes(context);
+
+	return <div className="container">
+		<p>Select the shape, number of shapes and the spacing </p>
+		<DropDown { ...context }/>
 		<InputBox { ...context }/>
-		<InputMargin { ...context }/>
-		<Squares { ...context }/>
-		<Circles { ...context }/>
+		<InputSpace { ...context }/>
+		{shapes.map((shape, index) =>
+			<div
+				key={ index }
+				className={ `${ shape.class }` }
+				style={ {
+					left: `${ shape.shapeX }`,
+					top: `${ shape.shapeY }`,
+				} }
+
+			/>)}
 	</div>;
+};
 
 export default Shapes;
