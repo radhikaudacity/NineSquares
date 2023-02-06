@@ -1,8 +1,9 @@
 import React from 'react';
 import DropDown from './DropDown';
-import InputBox from './InputBox';
+import InputCount from './InputCount';
 import InputSpace from './InputSpace';
 import ShapeManager from '../services/ShapeManager';
+import GeneralShape from './GeneralShape';
 
 const Shapes = (context) => {
 	const shapes = ShapeManager.createShapes(context);
@@ -10,19 +11,12 @@ const Shapes = (context) => {
 	return <div className="container">
 		<p>Select the shape, number of shapes and the spacing </p>
 		<DropDown { ...context }/>
-		<InputBox { ...context }/>
+		<InputCount { ...context }/>
 		<InputSpace { ...context }/>
-		{shapes.map((shape, index) =>
-			<div
-				key={ index }
-				className={ `${ shape.class }` }
-				style={ {
-					left: `${ shape.shapeX }`,
-					top: `${ shape.shapeY }`,
-				} }
-
-			/>)}
-	</div>;
+		<div>
+			{shapes.map((shape, index) =>
+				<GeneralShape key={ index } shape={ shape }/>)}
+		</div></div>;
 };
 
 export default Shapes;

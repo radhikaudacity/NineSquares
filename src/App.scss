@@ -9,21 +9,14 @@
 		width:5em
 
 	}
-.square{
+.shapeClass{
 	position: 'absolute';
 	height: '50px';
 	width: '50px';
-	background-color: '#ecc';
+	background-color: 'aquamarine';
 	border: '1px solid red',
 }
-.circle{
-	position: 'absolute';
-	height: '50px';
-	width: '50px';
-	border: '1px solid red';
-	border-radius: '50%';
-	background-color: 'aquamarine';
-}
+
 	.container{
 		width:80%;
 		margin:20px 100px

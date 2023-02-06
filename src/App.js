@@ -7,9 +7,7 @@ const App = (context) => {
 	= useState({ shapeCount: 9, space: 2, shapeType: 'square' });
 
 	return <div className="App">
-
 		<Shapes { ...{ ...context, state, setState } }/>
-
 	</div>;
 };
 

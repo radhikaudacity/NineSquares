@@ -1,5 +1,5 @@
 import React from 'react';
-const InputBox = ({ state, setState }) => {
+const InputCount = ({ state, setState }) => {
 	const handleChange = ({ value }) =>
 		setState({ ...state, shapeCount: value });
 
@@ -16,4 +16,4 @@ const InputBox = ({ state, setState }) => {
 	;
 };
 
-export default InputBox;
+export default InputCount;
