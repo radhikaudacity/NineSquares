@@ -1,12 +1,12 @@
 import { React, useState } from 'react';
 import './App.scss';
-import Squares from './components/Squares';
+import Shapes from './components/Shapes';
 
 const App = (context) => {
 	const [state, setState] = useState({ number: 0 });
 
 	return <div className="App">
-		<Squares { ...{ ...context, state, setState } }/>
+		<Shapes { ...{ ...context, state, setState } }/>
 
 	</div>;
 };
