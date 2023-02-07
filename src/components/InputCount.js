@@ -1,19 +1,21 @@
 import React from 'react';
-const InputCount = ({ state, setState }) => {
-	const handleChange = ({ value }) =>
-		setState({ ...state, shapeCount: value });
+
+const handleChange = ({ state, setState, data: { target }}) =>
+	setState({ ...state, shapeCount: target.value });
+
+const InputCount = (context) => {
+	const { state: { shapeCount }} = context;
 
 	return <div>
 		<span>Enter count</span>
 		<input
 			className="input"
 			type="text"
-			value={ state.shapeCount }
+			value={ shapeCount }
 			onChange={ ({ target }) =>
-				handleChange(target) }
+				handleChange({ ...context, data: { target }}) }
 		/>
-	</div>
-	;
+	</div>;
 };
 
 export default InputCount;

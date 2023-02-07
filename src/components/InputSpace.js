@@ -1,18 +1,21 @@
 import React from 'react';
-const InputSpace = ({ state, setState }) => {
-	const handleChange = ({ value }) => setState({ ...state, space: value });
+
+const handleChange = ({ state, setState, data: { target }}) =>
+	setState({ ...state, space: target.value });
+
+const InputSpace = (context) => {
+	const { state: { space }} = context;
 
 	return <div>
 		<span>Enter spacing between shapes</span>
 		<input
 			className="input"
 			type="text"
-			value={ state.space }
+			value={ space }
 			onChange={ ({ target }) =>
-				handleChange(target) }
+				handleChange({ ...context, data: { target }}) }
 		/>
-	</div>
-	;
+	</div>;
 };
 
 export default InputSpace;

@@ -1,24 +1,24 @@
 import React from 'react';
 
-const handleChange = (target, { state, setState }) =>
+const handleChange = ({ state, setState, data: { target }}) =>
 	setState({ ...state, shapeType: target.value });
 
 const DropDown = (context) => {
-	const { state } = context;
+	const { state: { shapeType }} = context;
 
 	return <div>
 		<label>Select the shape</label>
 		<select
-			value={ state.shapeType }
+			value={ shapeType }
 			className="dropDown"
-			onChange={ ({ target }) => handleChange(target, context) }
+			onChange={ ({ target }) =>
+				handleChange({ ...context, data: { target }}) }
 		>
-			<option value="select">
-				Select</option>
-			<option value="square">
-				Square</option>
-			<option value="circle">
-				Circle</option>
+			{['square', 'circle']
+				.map((item, index) =>
+					<option key={ index } value={ item }>
+						{item}</option>)	}
+
 		</select>
 	</div>;
 };

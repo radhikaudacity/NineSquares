@@ -1,5 +1,4 @@
 import { range } from '@laufire/utils/collection';
-import { peek } from '@laufire/utils/debug';
 import { rndString } from '@laufire/utils/random';
 
 const getCirclePosition = (
@@ -32,7 +31,7 @@ const getSquarePosition = (
 	return { movePosX, movePosY };
 };
 
-const getPosition = {
+const getPositions = {
 	square: getSquarePosition,
 	circle: getCirclePosition,
 };
@@ -47,15 +46,13 @@ const createShapes = (context) => {
 	const shapes = range(0, shapeCount).map((shape, index) =>
 		({ id: rndString(),
 			shapeType: shapeType,
-			style: { left: `${ getPosition[shapeType](
+			style: { left: `${ getPositions[shapeType](
 				shapeCount, index, space
 			).movePosX }px`,
-			top: `${ getPosition[shapeType](
+			top: `${ getPositions[shapeType](
 				shapeCount, index, space
 			).movePosY }px`,
 			borderRadius: ` ${ getBorderRadius[shapeType] }` }}));
-
-	peek(shapes);
 
 	return shapes;
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+
 const GeneralShape = ({ shape }) => {
 	const { style } = shape;
 
