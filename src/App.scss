@@ -4,21 +4,18 @@
 	button {
 		font-weight: bold;
 	}
-	.dropDown{
+	.dropDown ,.input{
 		font-size: 2em;
 		width:5em
 
 	}
 .shapeClass{
-	position: 'absolute';
-	height: '50px';
-	width: '50px';
-	background-color: 'aquamarine';
-	border: '1px solid red',
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background-color: aquamarine;
+	border: 1px solid red,
 }
 
-	.container{
-		width:80%;
-		margin:20px 100px
-	}
+
 }

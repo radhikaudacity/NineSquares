@@ -1,4 +1,6 @@
 import { range } from '@laufire/utils/collection';
+import { peek } from '@laufire/utils/debug';
+import { rndString } from '@laufire/utils/random';
 
 const getCirclePosition = (
 	shapeCount, index, space
@@ -6,7 +8,7 @@ const getCirclePosition = (
 	const fifty = 50;
 	const radius = fifty * Number(space);
 	const two = 2;
-	const offSetX = 500;
+	const offSetX = 1000;
 	const offSetY = 500;
 	const theta = two * Math.PI / shapeCount;
 	const movePosY = radius * Math.sin(theta * index) + offSetY;
@@ -19,8 +21,8 @@ const getSquarePosition = (
 	shapeCount, index, space
 ) => {
 	const width = 50;
-	const offSetX = 100;
-	const offSetY = 100;
+	const offSetX = 1000;
+	const offSetY = 500;
 	const noOfRows = Math.round(Math.sqrt(shapeCount));
 	const colNo = index % noOfRows;
 	const rowNo = Math.floor(index / noOfRows);
@@ -43,19 +45,17 @@ const createShapes = (context) => {
 	const { state: { shapeCount, shapeType, space }} = context;
 
 	const shapes = range(0, shapeCount).map((shape, index) =>
-		({ shapeType: shapeType,
-			left: `${ getPosition[shapeType](
+		({ id: rndString(),
+			shapeType: shapeType,
+			style: { left: `${ getPosition[shapeType](
 				shapeCount, index, space
 			).movePosX }px`,
 			top: `${ getPosition[shapeType](
 				shapeCount, index, space
 			).movePosY }px`,
-			borderRadius: ` ${ getBorderRadius[shapeType] }`,
-			position: 'absolute',
-			height: '50px',
-			width: '50px',
-			backgroundColor: 'aquamarine',
-			border: '1px solid red' }));
+			borderRadius: ` ${ getBorderRadius[shapeType] }` }}));
+
+	peek(shapes);
 
 	return shapes;
 };

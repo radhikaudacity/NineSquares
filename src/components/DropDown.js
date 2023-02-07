@@ -6,7 +6,7 @@ const handleChange = (target, { state, setState }) =>
 const DropDown = (context) => {
 	const { state } = context;
 
-	return <div className="input">
+	return <div>
 		<label>Select the shape</label>
 		<select
 			value={ state.shapeType }

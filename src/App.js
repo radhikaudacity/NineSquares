@@ -1,13 +1,17 @@
 import { React, useState } from 'react';
 import './App.scss';
+import Inputs from './components/Inputs';
 import Shapes from './components/Shapes';
 
 const App = (context) => {
 	const [state, setState]
 	= useState({ shapeCount: 9, space: 2, shapeType: 'square' });
 
+	const extendedContext = { ...context, state, setState };
+
 	return <div className="App">
-		<Shapes { ...{ ...context, state, setState } }/>
+		<Inputs { ...extendedContext }/>
+		<Shapes { ...extendedContext }/>
 	</div>;
 };
 
