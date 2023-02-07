@@ -5,7 +5,7 @@ import GeneralShape from './GeneralShape';
 const Shapes = (context) => {
 	const shapes = ShapeManager.createShapes(context);
 
-	return <div>
+	return <div className="center">
 		{shapes.map((shape, index) =>
 			<GeneralShape key={ index } shape={ shape }/>)}
 	</div>;

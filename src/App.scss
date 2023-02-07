@@ -9,13 +9,21 @@
 		width:5em
 
 	}
-.shapeClass{
-	position: absolute;
-	height: 50px;
-	width: 50px;
-	background-color: aquamarine;
-	border: 1px solid red,
-}
+
+	.center {
+		position: relative;
+		margin: 100px auto;
+
+		width:50%
+
+	}
+	.shapeClass{
+		position: absolute;
+		height: 50px;
+		width: 50px;
+		background-color: aquamarine;
+		border: 1px solid red,
+	}
 
 
 }
