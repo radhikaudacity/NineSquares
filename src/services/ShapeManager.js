@@ -69,11 +69,8 @@ const blinkCounter = (context) => {
 	}));
 };
 
-const blink = (context) => {
-	const { config: { pattern }} = context;
+const blink = (context) => patternDigit(context) === '1';
 
-	return patternDigit(context) === '1';
-};
 const patternDigit = ({ state: { blinkCount }, config: { pattern }}) =>
 	pattern.substr(blinkCount % pattern.length, 1);
 

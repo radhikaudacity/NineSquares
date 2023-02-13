@@ -7,7 +7,7 @@ import Ticker from './services/ticker';
 const App = (context) => {
 	const [state, setState]
 	= useState({ shapeCount: 9, space: 2, shapeType: 'circle', rotation: 0,
-		blinkCount: 0 });
+		pattern: '1010',	blinkCount: 0 });
 
 	const extendedContext = { ...context, state, setState };
 
