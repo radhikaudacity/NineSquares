@@ -1,4 +1,5 @@
 import { range } from '@laufire/utils/collection';
+import { peek } from '@laufire/utils/debug';
 import { rndString } from '@laufire/utils/random';
 
 const getCirclePosition = (
@@ -38,22 +39,35 @@ const getBorderRadius = {
 };
 
 const createShapes = (context) => {
-	const { state: { shapeCount, shapeType, space, rotAngle }} = context;
+	const { state: { shapeCount, shapeType, space, rotation,
+		visibility }} = context;
 
 	const shapes = range(0, shapeCount).map((shape, index) =>
 		({ id: rndString(),
 			shapeType: shapeType,
 			style: { left: `${ getPositions[shapeType](
-				shapeCount, index, space, rotAngle
+				shapeCount, index, space, rotation
 			).movePosX }px`,
 			top: `${ getPositions[shapeType](
-				shapeCount, index, space, rotAngle
+				shapeCount, index, space, rotation
 			).movePosY }px`,
-			borderRadius: ` ${ getBorderRadius[shapeType] }` }}));
+			borderRadius: ` ${ getBorderRadius[shapeType] }`,
+			display: visibility }}));
 
 	return shapes;
 };
 
-const ShapeManager = { createShapes };
+const changeRotation = ({ setState, config: { increment }}) =>
+	setState((prevState) => ({
+		...prevState,
+		rotation: prevState.rotation + increment,
+	}));
+
+const blink = ({ config: { pattern }}) => peek(convertToArray(pattern));
+
+const convertToArray = (pattern) =>
+	pattern.split('').join(',');
+
+const ShapeManager = { createShapes, changeRotation, blink };
 
 export default ShapeManager;
