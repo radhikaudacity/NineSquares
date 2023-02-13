@@ -1,5 +1,4 @@
 import { range } from '@laufire/utils/collection';
-import { peek } from '@laufire/utils/debug';
 import { rndString } from '@laufire/utils/random';
 
 const getCirclePosition = (
@@ -39,8 +38,7 @@ const getBorderRadius = {
 };
 
 const createShapes = (context) => {
-	const { state: { shapeCount, shapeType, space, rotation,
-		visibility }} = context;
+	const { state: { shapeCount, shapeType, space, rotation }} = context;
 
 	const shapes = range(0, shapeCount).map((shape, index) =>
 		({ id: rndString(),
@@ -51,8 +49,7 @@ const createShapes = (context) => {
 			top: `${ getPositions[shapeType](
 				shapeCount, index, space, rotation
 			).movePosY }px`,
-			borderRadius: ` ${ getBorderRadius[shapeType] }`,
-			display: visibility }}));
+			borderRadius: ` ${ getBorderRadius[shapeType] }` }}));
 
 	return shapes;
 };
@@ -63,11 +60,24 @@ const changeRotation = ({ setState, config: { increment }}) =>
 		rotation: prevState.rotation + increment,
 	}));
 
-const blink = ({ config: { pattern }}) => peek(convertToArray(pattern));
+const blinkCounter = (context) => {
+	const { setState } = context;
 
-const convertToArray = (pattern) =>
-	pattern.split('').join(',');
+	setState((prevState) => ({
+		...prevState,
+		blinkCount: prevState.blinkCount + 1,
+	}));
+};
 
-const ShapeManager = { createShapes, changeRotation, blink };
+const blink = (context) => {
+	const { config: { pattern }} = context;
+
+	return patternDigit(context) === '1';
+};
+const patternDigit = ({ state: { blinkCount }, config: { pattern }}) =>
+	pattern.substr(blinkCount % pattern.length, 1);
+
+const ShapeManager = { createShapes, changeRotation, blinkCounter,
+	blink, patternDigit };
 
 export default ShapeManager;

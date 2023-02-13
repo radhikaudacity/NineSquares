@@ -2,10 +2,11 @@ import ShapeManager from '../ShapeManager.js';
 
 const masterLoop = [
 	'changeRotation',
-	'blink',
+	'blinkCounter',
+
 ];
-const runMasterLoop = () =>
-	masterLoop.map((data) => ShapeManager[data]());
+const runMasterLoop = (context) =>
+	masterLoop.map((data) => ShapeManager[data](context));
 
 const master = {
 	runMasterLoop, masterLoop,

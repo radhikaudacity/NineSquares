@@ -3,7 +3,7 @@ const start = (context) => {
 	const { config } = context;
 	const { tickerDelay } = config;
 
-	setInterval(() => MasterLoop.runMasterLoop, tickerDelay);
+	setInterval(() => MasterLoop.runMasterLoop(context), tickerDelay);
 };
 
 const Ticker = {
