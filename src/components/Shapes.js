@@ -8,7 +8,6 @@ const Shapes = (context) => {
 
 	return <div className="center">
 		<h1>blink pattern:{pattern}</h1>
-		<h1>blink digit:{ShapeManager.patternDigit(context)} </h1>
 		{ ShapeManager.blink(context) && shapes.map((shape, index) =>
 			<GeneralShape key={ index } shape={ shape }/>)}
 	</div>;

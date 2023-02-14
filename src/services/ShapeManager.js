@@ -68,13 +68,13 @@ const blinkCounter = (context) => {
 		blinkCount: prevState.blinkCount + 1,
 	}));
 };
+const convertStringToArray = (string) =>
+	string.split('');
 
-const blink = (context) => patternDigit(context) === '1';
-
-const patternDigit = ({ state: { blinkCount }, config: { pattern }}) =>
-	pattern.substr(blinkCount % pattern.length, 1);
+const blink = ({ state: { blinkCount }, config: { pattern }}) =>
+	convertStringToArray(pattern)[blinkCount % pattern.length] === '1';
 
 const ShapeManager = { createShapes, changeRotation, blinkCounter,
-	blink, patternDigit };
+	blink, convertStringToArray };
 
 export default ShapeManager;
